@@ -1,5 +1,6 @@
 package data_structures;
 
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class LinkedList {
@@ -13,6 +14,7 @@ public class LinkedList {
     }
   private Node first;
   private Node last;
+  private  int size;
   private boolean isEmpty() {
         return first == null;
     }
@@ -26,6 +28,8 @@ public class LinkedList {
           last.next = node;
           last = node;
       }
+
+      size++;
   }
   public void addFirst (int item) {
       var node = new Node(item);
@@ -35,6 +39,7 @@ public class LinkedList {
           node.next = first;
           first = node;
       }
+      size++;
 
   }
   public int indexOf(int item) {
@@ -63,6 +68,7 @@ public class LinkedList {
           first.next = null;
           first = second;
       }
+      size--;
 
   }
   public void removeLast() {
@@ -76,21 +82,41 @@ public class LinkedList {
           temp.next = null;
           last = temp;
       }
+      size--;
   }
 
+  public int size() {
+      return size;
+  }
+
+  public int[] toArray() {
+      int[] array = new int[size];
+      var current = first;
+      var index = 0;
+      while (current != null) {
+          array[index++] = current.value;
+          current = current.next;
+      }
+      return array;
+  }
 
 
     public static void main(String[] args) {
       var list = new LinkedList();
       list.addLast(10); // index 2
       list.addLast(20); // index 3
-      list.addLast(30);
+      list.addLast(30); // index 4
       list.addFirst(50); // index 1
       list.addFirst(60); // index 0
-      list.removeFirst();
-      list.removeLast();
+      System.out.println(list.size()); // size 5
+      list.removeFirst(); //removed 60
+      list.removeLast(); //removed 30
+      System.out.println(list.size()); //size 3
       System.out.println(list.indexOf(20));
       System.out.println(list.contains(20));
+      var array = list.toArray();
+      System.out.println(Arrays.toString(array)); // [50, 10, 20]
+
 
     }
 }

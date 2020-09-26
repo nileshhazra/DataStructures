@@ -1,8 +1,8 @@
 package data_structures;
 
 public class Tree {
-    private class Node {
-        private int value;
+    private static class Node {
+        private final int value;
         private Node leftChild;
         private Node rightChild;
 
