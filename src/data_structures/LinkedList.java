@@ -3,7 +3,7 @@ package data_structures;
 import java.util.NoSuchElementException;
 
 public class LinkedList {
-  public static class Node {
+  private static class Node {
         final private int value;
         private Node next;
 
