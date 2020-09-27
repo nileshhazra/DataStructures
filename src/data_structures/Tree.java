@@ -54,7 +54,39 @@ public class Tree {
         }
         return false;
     }
-
+    public void traversePreOrder() {
+        traversePreOrder(root);
+    }
+    public void traverseInOrder() {
+        traverseInOrder(root);
+    }
+    public void traversePostOrder() {
+        traversePostOrder(root);
+    }
+    private void traversePreOrder(Node root) {
+        if(root == null){
+            return;
+        }
+        System.out.print(root.value+ " ");
+        traversePreOrder(root.leftChild);
+        traversePreOrder(root.rightChild);
+    }
+    private void traverseInOrder(Node root) {
+        if(root == null){
+            return;
+        }
+        traverseInOrder(root.leftChild);
+        System.out.print(root.value + " ");
+        traverseInOrder(root.rightChild);
+    }
+    private void traversePostOrder(Node root) {
+        if(root == null){
+            return;
+        }
+        traversePostOrder(root.leftChild);
+        traversePostOrder(root.rightChild);
+        System.out.print(root.value +" ");
+    }
     public static void main(String[] args) {
         Tree tree = new Tree();
         tree.insert(7);
@@ -64,6 +96,12 @@ public class Tree {
         tree.insert(6);
         tree.insert(8);
         tree.insert(10);
-        System.out.println(tree.find(14));
+//        System.out.println(tree.find(14));
+        System.out.println("Pre-Order : ");
+        tree.traversePreOrder();
+        System.out.println("\nIn-Order: ");
+        tree.traverseInOrder();
+        System.out.println("\nPost-Order: ");
+        tree.traversePostOrder();
     }
 }
