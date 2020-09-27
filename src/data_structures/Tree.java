@@ -96,7 +96,13 @@ public class Tree {
         tree.insert(6);
         tree.insert(8);
         tree.insert(10);
-//        System.out.println(tree.find(14));
+//    Tree Structure
+//          7
+//        /   \
+//       4     9
+//      / \   / \
+//     1   6 8  10
+        System.out.println(tree.find(14)); //return false
         System.out.println("Pre-Order : ");
         tree.traversePreOrder();
         System.out.println("\nIn-Order: ");
