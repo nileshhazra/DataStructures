@@ -1,6 +1,7 @@
 package data_structures;
 
 public class Tree {
+
     private static class Node {
         private final int value;
         private Node leftChild;
@@ -24,6 +25,7 @@ public class Tree {
             root = node;
             return;
         }
+
         var current = root;
         while (true) {
             if(value< current.value){
@@ -41,7 +43,9 @@ public class Tree {
             }
         }
     }
-
+    public String toString() {
+        return "Node =" + root.value;
+    }
     public boolean find(int value) {
         var current = root;
         while (current !=null) {
@@ -87,6 +91,23 @@ public class Tree {
         traversePostOrder(root.rightChild);
         System.out.print(root.value +" ");
     }
+    public int height(){
+        return height(root);
+    }
+    private boolean isLeaf(Node node) {
+        return root.leftChild == null && root.rightChild == null;
+    }
+    private int height(Node root) {
+        if(root == null)
+            return -1;
+
+        if(isLeaf(root))
+            return 0;
+        return 1+ Math.max(
+                height(root.leftChild),
+                height(root.rightChild));
+    }
+
     public static void main(String[] args) {
         Tree tree = new Tree();
         tree.insert(7);
@@ -96,18 +117,14 @@ public class Tree {
         tree.insert(6);
         tree.insert(8);
         tree.insert(10);
-//    Tree Structure
-//          7
-//        /   \
-//       4     9
-//      / \   / \
-//     1   6 8  10
-        System.out.println(tree.find(14)); //return false
+        System.out.println(tree.find(6));
         System.out.println("Pre-Order : ");
         tree.traversePreOrder();
         System.out.println("\nIn-Order: ");
         tree.traverseInOrder();
         System.out.println("\nPost-Order: ");
         tree.traversePostOrder();
+
+
     }
 }
