@@ -124,6 +124,7 @@ public class Tree {
         tree.traverseInOrder();
         System.out.println("\nPost-Order: ");
         tree.traversePostOrder();
+        
 
 
     }
